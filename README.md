@@ -1,60 +1,55 @@
-# osint-harvester
+# osint-harvester — archived research prototype
 
-![Python](https://img.shields.io/badge/Language-Python-3776AB?style=flat-square)
-![Playwright](https://img.shields.io/badge/Automation-Playwright-2EAD33?style=flat-square)
-![License](https://img.shields.io/badge/License-Research--only-lightgrey?style=flat-square)
+![Python](https://img.shields.io/badge/Language-Python-3772AB?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Archived%20%C2%B7%20Do%20not%20run-B00020?style=flat-square)
 
-> Web intelligence collector built on Playwright.
-
-An open-source-intelligence (OSINT) harvesting tool that drives a headless browser to visit target pages and collect public data into structured output files for further analysis.
-
----
-
-## Features
-
-- **Playwright-driven scraping** - reliable navigation of modern, JavaScript-heavy pages
-- **Injected collector** - browser-side script gathers page data where a pure HTTP client cannot
-- **Structured output** - results saved under `output/` as JSON and plain-text dumps
-- **Headless operation** - designed to run unattended
+> **Archived.** This was a Playwright experiment for collecting publicly
+> reachable web data. It is kept only as a record of what not to do. It is not
+> maintained, not supported, and must not be run against any third-party
+> service.
 
 ---
 
-## Project structure
+## Why it is archived
 
-```
-osint-harvester/
-├── scripts/
-│   ├── scraper.py    # Playwright-driven scraper (entry point)
-│   └── console.js    # Browser-side collector injected by the scraper
-└── output/           # Collected results
-```
+The prototype talked to an intelligence platform through **undocumented
+endpoints instead of its official API**, without an API key or authorization.
+That is a terms-of-service violation and, depending on where you live and what
+is collected, may also violate computer-misuse and data-protection law. The
+approach is intentionally not documented here.
 
----
+Use the platform's official API with your own key, or a public dataset, instead.
+If you need a general Playwright scraping example, use a site that permits
+automated access and respect its `robots.txt`, rate limits and terms.
 
-## Requirements
+## Data in this repository
 
-- Python **3.8+**
-- `pip install playwright`, then install a browser:
+`output/` contains files produced by past runs that include **personal data**
+(names, addresses, phone numbers, account identifiers). Those files:
 
-  ```bash
-  pip install playwright
-  playwright install
-  ```
+- must not be redistributed;
+- should be deleted from the working tree **and from the Git history** (a normal
+  commit does not remove them from history);
+- must never be committed again — add `output/` to `.gitignore`.
 
-- A Chromium / Edge browser binary for Playwright
+If any of that data belongs to a third party, delete it and notify the affected
+party where required by law.
 
----
+## Repository contents
 
-## Usage
-
-```bash
-python scripts/scraper.py
+```text
+scripts/
+  scraper.py    # archived entry point (not runnable without private config)
+  console.js    # browser-side collector
+output/         # past run output containing personal data - do not reuse
 ```
 
-Configure the target list at the top of `scraper.py` before running. Results are written to `output/`.
+## Status
 
----
+No fixes, no updates, no pull requests. The correct action for this repository
+is to archive it, purge `output/`, and start over with an official API if the
+research is still needed.
 
-## Disclaimer
+## License
 
-Use this tool solely for **authorized intelligence gathering** on data that is public and lawful to collect. Respect target terms of service, privacy laws, and rate limits.
+No license is granted. All rights reserved.
